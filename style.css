@@ -1,0 +1,625 @@
+
+/* =====================================
+   NOVA AI COMPANION
+   Main Stylesheet
+===================================== */
+
+/* 1. Global Settings */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #070b14;
+    --panel: #0c1423;
+    --border: #263751;
+    --cyan: #70f5ff;
+    --text: #eaf4ff;
+    --muted: #91a4bd;
+    --green: #82f8bf;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+/* 2. Header */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 7%;
+    border-bottom: 1px solid var(--border);
+    background: #070b14;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.logo span {
+    color: var(--cyan);
+}
+
+.status {
+    color: var(--green);
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    margin-right: 6px;
+    box-shadow: 0 0 10px var(--green);
+}
+
+/* 3. Main Layout */
+
+main {
+    max-width: 1150px;
+    margin: auto;
+    padding: 55px 24px;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.eyebrow {
+    color: var(--cyan);
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+.intro h1 {
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1.12;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.intro h1 span {
+    color: var(--cyan);
+    text-shadow: 0 0 25px #70f5ff33;
+}
+
+.intro-text {
+    max-width: 570px;
+    margin: 0 auto 25px;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.explore-button {
+    display: inline-block;
+    padding: 11px 22px;
+    border: 1px solid var(--cyan);
+    border-radius: 7px;
+    color: var(--cyan);
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.explore-button:hover {
+    background: var(--cyan);
+    color: #07111b;
+    box-shadow: 0 0 22px #70f5ff44;
+}
+
+/* 4. Panels */
+
+.workspace {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    align-items: stretch;
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+.live-label {
+    color: var(--cyan);
+    border: 1px solid #70f5ff44;
+    padding: 4px 7px;
+    border-radius: 4px;
+    font-size: 9px;
+}
+
+/* 5. Companion Avatar */
+
+.avatar-stage {
+    min-height: 315px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    background:
+        radial-gradient(
+            ellipse at center,
+            #123b4b 0%,
+            #0b1929 45%,
+            #080e19 100%
+        );
+}
+
+.avatar-stage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        transparent 0px,
+        transparent 5px,
+        #70f5ff05 6px
+    );
+    pointer-events: none;
+}
+
+.avatar {
+    position: relative;
+    z-index: 2;
+    width: 125px;
+    height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--cyan);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        #1d6576,
+        #102535 70%
+    );
+    box-shadow:
+        0 0 25px #70f5ff44,
+        inset 0 0 25px #70f5ff22;
+    animation: floating 3s ease-in-out infinite;
+}
+
+.avatar-symbol {
+    color: var(--cyan);
+    font-size: 65px;
+    text-shadow: 0 0 20px var(--cyan);
+}
+
+.orbit {
+    position: absolute;
+    border: 1px dashed #70f5ff66;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.orbit-one {
+    width: 155px;
+    height: 155px;
+    animation: rotate 12s linear infinite;
+}
+
+.orbit-two {
+    width: 205px;
+    height: 85px;
+    transform: rotate(-25deg);
+    border-color: #70f5ff55;
+}
+
+.avatar-base {
+    width: 180px;
+    height: 35px;
+    margin-top: 20px;
+    border: 2px solid #70f5ff99;
+    border-radius: 50%;
+    box-shadow: 0 0 18px #70f5ff33;
+}
+
+.avatar-name {
+    color: var(--cyan);
+    font-size: 12px;
+    letter-spacing: 5px;
+    margin-top: 15px;
+}
+
+.avatar-caption {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 6. Avatar Information */
+
+.display-info {
+    padding-top: 22px;
+}
+
+.display-info h2,
+.chat-intro h2 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.display-info p,
+.chat-intro p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 17px;
+}
+
+.feature-list span {
+    font-size: 10px;
+    padding: 6px 9px;
+    color: var(--cyan);
+    border: 1px solid #70f5ff33;
+    border-radius: 5px;
+}
+
+/* 7. Chat Interface */
+
+.chat-intro {
+    margin-bottom: 20px;
+}
+
+.chat-messages {
+    height: 230px;
+    overflow-y: auto;
+    padding: 12px;
+    background: #080e19;
+    border: 1px solid #1b2a3e;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow-wrap: anywhere;
+}
+
+.message {
+    max-width: 92%;
+    padding: 11px 13px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+    animation: appear 0.25s ease;
+}
+
+.nova-message {
+    background: #14283a;
+    border: 1px solid #264b61;
+}
+
+.user-message {
+    background: #173e48;
+    border: 1px solid #27616c;
+    margin-left: auto;
+}
+
+.message-label {
+    display: block;
+    color: var(--cyan);
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.message p {
+    overflow-wrap: anywhere;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 8. Suggested Prompts */
+
+.suggestion-title {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.suggestion-button {
+    background: #102635;
+    color: var(--cyan);
+    border: 1px solid #347082;
+    border-radius: 20px;
+    padding: 8px 11px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: 0.2s;
+}
+
+.suggestion-button:hover {
+    background: #1a4353;
+    transform: translateY(-2px);
+}
+
+/* 9. Chat Input */
+
+.chat-form {
+    display: flex;
+    gap: 8px;
+}
+
+.chat-form input {
+    min-width: 0;
+    flex: 1;
+    background: #080e19;
+    color: var(--text);
+    border: 1px solid #30415a;
+    border-radius: 8px;
+    padding: 12px;
+    outline: none;
+    font-size: 12px;
+}
+
+.chat-form input:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 10px #70f5ff22;
+}
+
+.chat-form input::placeholder {
+    color: #687d98;
+}
+
+.send-button {
+    background: var(--cyan);
+    color: #07111b;
+    border: none;
+    border-radius: 8px;
+    padding: 0 15px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.send-button:hover {
+    background: #b0fbff;
+    box-shadow: 0 0 15px #70f5ff44;
+}
+
+.demo-note {
+    color: #687d98;
+    font-size: 10px;
+    margin-top: 12px;
+}
+
+/* 10. Project Vision */
+
+.vision {
+    margin-top: 24px;
+}
+
+.vision h2 {
+    font-size: clamp(25px, 4vw, 34px);
+    line-height: 1.3;
+    margin-bottom: 15px;
+}
+
+.vision > p {
+    color: var(--muted);
+    font-size: 13px;
+    max-width: 650px;
+}
+
+.roadmap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.roadmap-step {
+    padding: 16px 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #080e19;
+}
+
+.step-number {
+    color: var(--cyan);
+    font-size: 11px;
+}
+
+.roadmap-step h3 {
+    font-size: 14px;
+    margin: 10px 0 6px;
+}
+
+.roadmap-step p {
+    color: var(--muted);
+    font-size: 11px;
+    margin-bottom: 14px;
+}
+
+.step-status {
+    color: var(--cyan);
+    font-size: 8px;
+    letter-spacing: 0.5px;
+}
+
+/* 11. Research Note */
+
+.research-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 25px 5px;
+}
+
+.note-icon {
+    color: var(--cyan);
+    font-size: 24px;
+}
+
+.research-note h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.research-note p {
+    color: var(--muted);
+    font-size: 12px;
+    max-width: 700px;
+}
+
+/* 12. Footer */
+
+.footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.footer > span {
+    color: #687d98;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+/* 13. Mobile-Friendly Layout */
+
+@media (max-width: 800px) {
+    main {
+        padding: 40px 18px;
+    }
+
+    .workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .roadmap {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .intro h1 {
+        letter-spacing: -1px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 18px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .status {
+        font-size: 9px;
+    }
+
+    .panel {
+        padding: 17px;
+    }
+
+    .roadmap {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .chat-form input {
+        width: 0;
+    }
+}
